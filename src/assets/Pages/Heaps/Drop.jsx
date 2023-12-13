@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { state } from "../../../store";
 import { useSnapshot } from "valtio";
 
-function Drop({setheapdata}) {
+function Drop({setheapdata,setprevSelected}) {
   const snap = useSnapshot(state);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [Selected, setSelected] = useState(false);
@@ -12,10 +12,11 @@ function Drop({setheapdata}) {
   };
 
   const handleOptionSelect = (algoSelected) => {
+    setprevSelected(state.AlgoSelected)
     state.AlgoSelected = algoSelected;
     setSelected(true)
     setIsDropdownOpen(false);
-    setheapdata(prev => [[0,null]])
+    if(state.AlgoSelected !== "Heap Sort") setheapdata(prev => [[0,null]])
   };
 
   return (
@@ -71,6 +72,14 @@ function Drop({setheapdata}) {
               onClick={() => handleOptionSelect("Max Heap")}
             >
               Max Heap
+            </a>
+          </li>
+          <li>
+            <a
+              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white hover:cursor-pointer"
+              onClick={() => handleOptionSelect("Heap Sort")}
+            >
+              Heap Sort
             </a>
           </li>
         </ul>

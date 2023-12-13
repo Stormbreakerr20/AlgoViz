@@ -2,8 +2,11 @@ import { useState } from "react";
 import Buttons from "./Buttons";
 import styled from "styled-components";
 import Tree from "./Tree";
+import { state } from "../../../store";
+import { useSnapshot } from "valtio";
 function Heaps() {
   const [heapdata, setHeapdata] = useState([[0, null]]);
+  const snap = useSnapshot(state)
   return (
     <>
       <div className="flex flex-col mx-auto w-[90vw] h-[75vh] max-sm:h-[80vh] mt-5 gap-5">
@@ -14,13 +17,16 @@ function Heaps() {
           <div className=" flex justify-center gap-3 p-3">
             {heapdata.length > 1 &&  heapdata.slice(1,).map((value, index) => (
               <Box
+                bg = {value[1]}
                 key={index}
               >
                 {value[0]}
               </Box>
             ))}
           </div>
-          <Tree heapdata={heapdata} setHeapdata={setHeapdata} />
+         {
+          state.AlgoSelected !== "Heap Sort" &&  <Tree heapdata={heapdata} setHeapdata={setHeapdata} />
+         }
         </Blured>
       </div>
     </>
@@ -46,6 +52,7 @@ const Box = styled.div`
     font-weight: 500;
     background-color: white;
     border-radius:10px;
+    background-color: ${props => props.bg};
 
     &:hover{
         background-color: #FFA800;
