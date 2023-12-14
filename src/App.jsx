@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Sorting from './assets/Pages/Sort/Sorting'
 import { ToastContainer } from 'react-toastify';
 import Heaps from './assets/Pages/Heaps/Heaps'
+import Ml from './assets/Pages/ML/Ml'
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Sorting />}></Route>
           <Route  path='/heap' element={<Heaps />}></Route>
+          <Route  path='/ml' element={<Ml />}></Route>
         </Routes>
         <ToastContainer />
       </BrowserRouter>

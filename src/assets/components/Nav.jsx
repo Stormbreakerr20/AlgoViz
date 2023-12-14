@@ -12,7 +12,7 @@ function Nav() {
         <Link to="/" onClick={() => state.isRunning = false}>
           <span>SORTING</span>
         </Link>
-        <span>LISTS</span>
+        <Link to="/ml" onClick={() => state.isRunning = false}>ML</Link>
         <div>
           <img
             src={Logo}

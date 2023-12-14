@@ -5,7 +5,7 @@ import "react-dropdown/style.css";
 import Drop from "./Drop";
 import { MdSpeed } from "react-icons/md";
 import { CgSize } from "react-icons/cg";
-import { BsGooglePlay } from "react-icons/bs";
+import { BsGooglePlay, BsStopBtn } from "react-icons/bs";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {
@@ -61,9 +61,15 @@ function Buttons({ arr, setArr }) {
     const minDelay = state.ArraySize > 80 ? 0 : 15;
     const maxDelay = 1000;
 
-    if (state.ArraySize > 80 || (window.innerWidth<800 && state.ArraySize>=20)) {
+    if (
+      state.ArraySize > 80 ||
+      (window.innerWidth < 800 && state.ArraySize >= 20)
+    ) {
       maxSpeed = 7;
-    } else if (state.ArraySize < 50 || (window.innerWidth<800 && state.ArraySize<15)) {
+    } else if (
+      state.ArraySize < 50 ||
+      (window.innerWidth < 800 && state.ArraySize < 15)
+    ) {
       maxSpeed = 12;
     }
 
@@ -75,6 +81,9 @@ function Buttons({ arr, setArr }) {
 
     state.delay = delay;
     setSpeedValue(speedValue);
+  };
+  const refresh = () => {
+    window.location.reload();
   };
 
   return (
@@ -98,7 +107,13 @@ function Buttons({ arr, setArr }) {
               id="steps-range"
               type="range"
               min="10"
-              max={window.innerWidth<800?window.innerWidth<550?'60':"80":"150"}
+              max={
+                window.innerWidth < 800
+                  ? window.innerWidth < 550
+                    ? "60"
+                    : "80"
+                  : "150"
+              }
               value={rangeValue}
               step="5"
               className="h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 max-md:w-[40%]"
@@ -129,10 +144,8 @@ function Buttons({ arr, setArr }) {
               onChange={handleSpeedChange}
             />
           </div>
-
         </div>
         <div className="flex gap-3 flex-grow max-xl:w-[100%] max-sm:flex-col">
-
           <div className="flex-grow shadow-md h-[40px] max-xl:w-[50%] max-sm:w-[100%]  rounded-lg z-50">
             <Drop />
           </div>
@@ -147,6 +160,19 @@ function Buttons({ arr, setArr }) {
               </span>
             </span>
           </div>
+          {state.isRunning && (
+            <div
+              onClick={state.isRunning ? refresh : Startsorting}
+              className="max-sm:w-[100%] shadow-md flex-grow h-[40px] bg-[#FFA800] rounded-lg flex justify-evenly items-center max-xl:w-[50%]"
+            >
+              <span className="flex  justify-center items-center gap-3 mb-1  text-lg font-medium text-gray-900 cursor-pointer">
+                <span>Stop</span>
+                <span className={`text-lg`}>
+                  <BsStopBtn />
+                </span>
+              </span>
+            </div>
+          )}
         </div>
       </div>
     </>
