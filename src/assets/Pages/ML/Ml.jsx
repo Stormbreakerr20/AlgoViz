@@ -5,29 +5,20 @@ import styled from "styled-components";
 import { state } from "../../../store";
 import { useSnapshot } from "valtio";
 import Regression from './Regression/Regression'
+import Rf from './RandomForest/RF';
 
 function Ml() {
-  const get_data = async () => {
-    const result = await api.get('/regression')
-    setReg_image(result.data)
-  }
-  // {reg_image && <img src={`data:image/png;base64,${reg_image.image}`} alt="Regression Image" />}
-
-  useEffect(() => {
-    get_data()
-  }, [])
-
   const snap = useSnapshot(state)
-
   return (
     <>
       <div className="flex flex-col mx-auto w-[90vw] h-[75vh] max-sm:h-[80vh] mt-5 gap-5">
-        <div className="flex w-[100%] max-xl:justify-center flex-col gap-3">
+        <div className="flex w-[100%]  flex-col gap-3">
           <Buttons />
         </div>
         <Blured className="bg-black w-[100%] h-[100%] flex  flex-col gap-5  rounded-lg items-center justify-center">
           <div className=" w-[100%]  gap-3 p-3">
            {state.AlgoSelected === "Regression"? <Regression/> : <></>}
+           {state.AlgoSelected === "Random Forest"? <Rf/> : <></>}
           </div>
         </Blured>
       </div>

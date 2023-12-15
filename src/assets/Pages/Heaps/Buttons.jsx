@@ -19,7 +19,7 @@ function Buttons({ heapdata, setHeapdata }) {
     e.preventDefault();
     if (state.AlgoSelected !== "Min Heap" && state.AlgoSelected !== "Max Heap" && state.AlgoSelected !== "Heap Sort")
       toast.error("Select an algorithm");
-    else if (heapdata.length > 15) toast.error("Max limit reached!");
+    else if (heapdata.length > 14) toast.error("Max limit reached!");
     else if(heapdata.length === 1 && state.AlgoSelected === "Heap Sort" ) toast.error("You need to prepare HEAP before Heap Sort!");
     else if (toinsert.length || state.AlgoSelected === "Heap Sort") {
       state.isRunning = true;

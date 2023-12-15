@@ -31,7 +31,7 @@ function Tree({ heapdata, setHeapdata }) {
   
   return (
     <>
-      <div className="tree flex flex-col text-lg mx-auto w-[100%] h-[100%] items-center">
+      <div className="tree flex flex-col text-sm mx-auto w-[100%] h-[100%] items-center">
         <>
           {heapdata.length === 1?"": (
             <ul>

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Tree from "./Tree";
 import { state } from "../../../store";
 import { useSnapshot } from "valtio";
+
 function Heaps() {
   const [heapdata, setHeapdata] = useState([[0, null]]);
   const snap = useSnapshot(state)
@@ -13,8 +14,8 @@ function Heaps() {
         <div className="flex w-[100%] max-xl:justify-center">
           <Buttons heapdata={heapdata} setHeapdata={setHeapdata} />
         </div>
-        <Blured className="bg-black w-[100%] h-[100%] flex  flex-col gap-5  rounded-lg items-center justify-center">
-          <div className=" flex justify-center gap-3 p-3">
+        <Blured className="bg-black w-[100%] h-[100%] flex  flex-col  rounded-lg items-center justify-center">
+          <div className=" flex justify-center gap-2 p-3">
             {heapdata.length > 1 &&  heapdata.slice(1,).map((value, index) => (
               <Box
                 bg = {value[1]}
@@ -43,12 +44,12 @@ const Blured = styled.div`
 `;
 
 const Box = styled.div`
-    width: 45px;
-    height: 45px;
+    width: 3vw;
+    height: 6vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: larger;
+    font-size: 1.5vw;
     font-weight: 500;
     background-color: white;
     border-radius:10px;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Reg_Drop from "./Reg_Drop";
 import DatasetDrop from "./DatasetDrop";
 import api from "../../../../api";
+import Loading from "../../../components/Loading";
 
 function Regression() {
   const [reg_type, setReg_type] = useState("Standard");
@@ -9,8 +10,10 @@ function Regression() {
   const [reg_image, setReg_image] = useState(null);
   const [accuracy, setAccuracy] = useState(0);
   const [dataSet, setDataset] = useState("Dataset-1");
+  const [loading, setLoading] = useState(false);
 
   const get_data_degree = async (reset) => {
+    setLoading(true);
     if (reset) {
       const result = await api.get(`/regression/0/${dataSet}/${reg_type}`);
       setReg_image(result.data.image);
@@ -22,6 +25,7 @@ function Regression() {
       setReg_image(result.data.image);
       setAccuracy(result.data.accuracy);
     }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -39,37 +43,37 @@ function Regression() {
   };
 
   return (
-    <div className="flex w-[100%] justify-evenly">
-      <div className="w-[300px] h-[55vh] rounded-xl justify-between bg-black flex flex-col items-center">
-        <div className="flex-grow flex flex-col items-center gap-5 p-4 w-[100%]">
+    <div className="flex w-[100%] h-[100%] justify-evenly items-center max-xl:gap-5 ">
+      <div className="w-[300px] h-[max-content] rounded-xl justify-between my-1  bg-black flex flex-col  items-center">
+        <div className="flex-grow flex flex-col items-center gap-4 p-4 w-[100%]">
           <div className="w-[100%] overflow-visible h-[40px] z-20">
             <Reg_Drop setReg_type={setReg_type} reg_type={reg_type} />
           </div>
           <div className="w-[100%] overflow-visible h-[40px] z-10">
             <DatasetDrop setDataset={setDataset} dataSet={dataSet} />
           </div>
-          <div className="flex flex-col gap-1 justify-start w-[100%] ">
+          <div className="flex flex-col text-xs gap-1 justify-start w-[100%] ">
             <label htmlFor="degree" className="text-white">
               Enter degree for Regression
             </label>
             <input
               id="degree"
               type="Number"
-              className="rounded text-lg p-1 px-3"
+              className="rounded text-md p-1 px-3"
               placeholder={degree}
               onChange={handleChange}
               min={1}
             />
           </div>
           
-          <div className="flex flex-col gap-1 justify-start w-[100%] ">
+          <div className="flex flex-col gap-1 text-xs justify-start w-[100%] ">
             <label htmlFor="degree" className="text-white">
               Accuracy of the model
             </label>
             <input
               id="degree"
               type="text"
-              className="rounded text-lg p-1 px-3"
+              className="rounded text-md p-1 px-3"
               disabled
               value={(accuracy * 100).toLocaleString() + " %"}
             />
@@ -78,23 +82,23 @@ function Regression() {
         <div className="flex">
           <div
             onClick={() => get_data_degree(false)}
-            className=" my-4 mx-2 bg-[#FFA800] justify-center cursor-pointer text-lg font-medium flex hover:bg-yellow-300 rounded-lg px-5 h-[40px] text-center items-center"
+            className=" my-2 mx-2 bg-[#FFA800] justify-center cursor-pointer text-sm font-medium flex hover:bg-yellow-300 rounded-lg px-4 h-[40px] text-center items-center"
           >
             Run
           </div>
           <div
             onClick={Refresh}
             id="refresh"
-            className=" my-4 mx-2 bg-[#FFA800] justify-center cursor-pointer text-lg font-medium flex hover:bg-yellow-300 rounded-lg px-5 h-[40px] text-center items-center"
+            className=" my-2 mx-2 bg-[#FFA800] justify-center cursor-pointer text-sm font-medium flex hover:bg-yellow-300 rounded-lg px-4 h-[40px] text-center items-center"
           >
             Refresh
           </div>
         </div>
       </div>
-      <div>
-        {reg_image && (
+      <div className=" flex justify-center items-center ">
+        {loading?<Loading/>: (
           <img
-            className="h-[100%] w-[80%] rounded-lg shadow-lg"
+            className="h-[50vh] w-[30vw] rounded-lg shadow-lg"
             src={`data:image/png;base64,${reg_image}`}
             alt="Regression Image"
           />
