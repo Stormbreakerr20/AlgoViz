@@ -1,83 +1,72 @@
 import React, { useEffect, useState } from "react";
-import Reg_Drop from "./Reg_Drop";
-import DatasetDrop from "./DatasetDrop";
+import DatasetDrop from "../RandomForest/DatasetDrop";
 import api from "../../../../api";
-import Loading from "../../../components/Loading";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Loading from "../../../components/Loading";
 
-function Regression() {
-  const [reg_type, setReg_type] = useState("Standard");
-  const [degree, setDegree] = useState(0);
-  const [reg_image, setReg_image] = useState(null);
+function Dt() {
+  const [max_depth, setMaxdepth] = useState(0);
   const [accuracy, setAccuracy] = useState(0);
   const [dataSet, setDataset] = useState("Dataset-1");
+  const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const get_data_degree = async (reset) => {
-    setLoading(true);
-    if (reset) {
-      const result = await api.get(`/regression/0/${dataSet}/${reg_type}`);
-      setReg_image(result.data.image);
-      setAccuracy(result.data.accuracy);
-    } else {
-      const result = await api.get(
-        `/regression/${degree}/${dataSet}/${reg_type}`
-      );
-      setReg_image(result.data.image);
-      setAccuracy(result.data.accuracy);
-    }
-    setLoading(false);
+  const get_data = async (reset) => {
+    setLoading(true)
+    const result = await api.get(
+      `/decision_tree/${dataSet}/${reset}/${max_depth}`
+    );
+    setLoading(false)
+    setImage(result.data.image);
+    setAccuracy(result.data.accuracy);
   };
 
   useEffect(() => {
-    get_data_degree(false);
+    get_data(true);
   }, [dataSet]);
 
-  const handleChange = (e) => {
-    setDegree(e.target.value);
+  const handleDepth = (e) => {
+    setMaxdepth(e.target.value);
   };
 
   const Refresh = () => {
-    document.getElementById("degree").value = "";
-    setDegree(0);
-    get_data_degree(true);
+    get_data(true);
+    document.getElementById("depth").value = "";
+    setMaxdepth(0);
   };
+
   const handleSubmit = () => {
-    if (degree === 0) toast.error("Please enter degree");
-    else get_data_degree(false);
+    if(max_depth === 0) toast.error("Please enter depth")
+    else get_data(false);
   }
 
   return (
-    <div className="flex max-sm:flex-col w-[100%] h-[100%]  justify-evenly items-center max-xl:gap-5 ">
+    <div className="flex max-sm:flex-col max-sm:p-3 w-[100%] h-[100%] justify-evenly items-center max-xl:gap-5 ">
       <div className="w-[300px] h-[max-content] rounded-xl justify-between my-1  bg-black flex flex-col  items-center">
         <div className="flex-grow flex flex-col items-center gap-4 p-4 w-[100%]">
-          <div className="w-[100%] overflow-visible h-[40px] z-20">
-            <Reg_Drop setReg_type={setReg_type} reg_type={reg_type} />
-          </div>
-          <div className="w-[100%] overflow-visible h-[40px] z-10">
+          <div className="w-[100%] oveDtlow-visible h-[40px] z-10">
             <DatasetDrop setDataset={setDataset} dataSet={dataSet} />
           </div>
           <div className="flex flex-col text-xs gap-1 justify-start w-[100%] ">
-            <label htmlFor="degree" className="text-white">
-              Enter degree for Regression
+            <label htmlFor="depth" className="text-white">
+              Max Depth
             </label>
             <input
-              id="degree"
+              id="depth"
               type="Number"
               className="rounded text-md p-1 px-3"
-              placeholder={degree}
-              onChange={handleChange}
+              placeholder={1}
+              onChange={handleDepth}
               min={1}
             />
           </div>
-          
           <div className="flex flex-col gap-1 text-xs justify-start w-[100%] ">
             <label htmlFor="degree" className="text-white">
               Accuracy of the model
             </label>
             <input
-              id="degree"
+              id="est"
               type="text"
               className="rounded text-md p-1 px-3"
               disabled
@@ -102,11 +91,11 @@ function Regression() {
         </div>
       </div>
       <div className=" flex justify-center items-center ">
-        {loading?<Loading/>: (
+        {loading? <Loading/> : (
           <img
-            className=" w-[70%] max-xl:w-[80%] max-sm:w-[90%] h-[auto]   rounded-lg shadow-lg"
-            src={`data:image/png;base64,${reg_image}`}
-            alt="Regression Image"
+            className="w-[70%] max-xl:w-[80%] max-sm:w-[90%] h-[auto] rounded-lg shadow-lg"
+            src={`data:image/png;base64,${image}`}
+            alt="Classification Image"
           />
         )}
       </div>
@@ -114,4 +103,4 @@ function Regression() {
   );
 }
 
-export default Regression;
+export default Dt;

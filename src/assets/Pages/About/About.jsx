@@ -1,26 +1,20 @@
 import React, { useEffect ,useState} from 'react'
-import api from '../../../api'
 import Buttons from "./Buttons";
 import styled from "styled-components";
-import { state } from "../../../store";
-import { useSnapshot } from "valtio";
-import Regression from './Regression/Regression'
-import Rf from './RandomForest/Rf';
-import Dt from './Decision_Tree/Decision_tree';
+import Project from './Project';
+import Me from './Me';
 
-function Ml() {
-  const snap = useSnapshot(state)
+function About() {
+  const [about, setAbout] = useState("Me")
   return (
     <>
-      <div className="flex flex-col mx-auto w-[90vw] h-[75vh] mt-5 max-sm:mb-[10rem] gap-5 ">
+      <div className="flex flex-col mx-auto w-[90vw] h-[75vh] max-sm:h-[max-content] mt-5 gap-5 ">
         <div className="flex w-[100%]  flex-col gap-3">
-          <Buttons />
+          <Buttons setAbout={setAbout}/>
         </div>
         <Blured className="w-[100%] h-[100%] flex  flex-col gap-5 mb-[3rem]   rounded-lg items-center justify-center">
           <div className=" w-[100%]  gap-3 p-3">
-           {state.AlgoSelected === "Regression"? <Regression/> : <></>}
-           {state.AlgoSelected === "Random Forest"? <Rf/> : <></>}
-           {state.AlgoSelected === "Decision Tree"? <Dt/> : <></>}
+           {about === "Me"? <Me/>: <></>}
           </div>
         </Blured>
       </div>
@@ -28,7 +22,7 @@ function Ml() {
   )
 }
 
-export default Ml
+export default About
 
 const Blured = styled.div`
   border-radius: 20px;

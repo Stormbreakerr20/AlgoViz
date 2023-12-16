@@ -9,7 +9,8 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { MinHeapInsert, MaxHeapInsert, MaxHeapSort } from "./Heap";
 
-function Buttons({ heapdata, setHeapdata }) {
+function Buttons({ heapdata, setHeapdata,disabled }) {
+
   const [toinsert, setInsert] = useState("");
   const snap = useSnapshot(state);
 
@@ -18,8 +19,10 @@ function Buttons({ heapdata, setHeapdata }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (state.AlgoSelected !== "Min Heap" && state.AlgoSelected !== "Max Heap" && state.AlgoSelected !== "Heap Sort")
-      toast.error("Select an algorithm");
+      toast.error("Choose an algorithm");
     else if (heapdata.length > 14) toast.error("Max limit reached!");
+    else if (window.innerWidth < 1000 && heapdata.length > 7) toast.error("Max limit reached!");
+    else if (window.innerWidth < 1160 && heapdata.length > 12) toast.error("Max limit reached!");
     else if(heapdata.length === 1 && state.AlgoSelected === "Heap Sort" ) toast.error("You need to prepare HEAP before Heap Sort!");
     else if (toinsert.length || state.AlgoSelected === "Heap Sort") {
       state.isRunning = true;
@@ -86,7 +89,7 @@ function Buttons({ heapdata, setHeapdata }) {
               className="flex w-[40%] gap-1 justify-center items-center"
             >
               <input
-                disabled={state.isRunning}
+                disabled={state.isRunning || disabled}
                 type="number"
                 className="h-2 w-[60%] bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700   max-md:w-[40%] p-3"
                 onChange={handleChange}
@@ -96,7 +99,7 @@ function Buttons({ heapdata, setHeapdata }) {
                 type="submit"
                 className="mx-1 bg-black text-sm text-white px-2 py-1 rounded-md"
                 onClick={handleSubmit}
-                disabled={state.isRunning}
+                disabled={state.isRunning || disabled}
               >
                 Insert
               </button>

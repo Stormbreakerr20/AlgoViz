@@ -36,21 +36,22 @@ function Rf() {
   };
 
   const Refresh = () => {
+    setEstimators(0);
+    setMax_samples(1);
     get_data(true);
     document.getElementById("est").value = "";
     setbootstrap(false);
     document.getElementById("checkbox").prop("checked", false);
-    setEstimators(1);
-    setMax_samples(1);
   };
 
   const handleSubmit = () => {
+    console.log(estimators)
     if(estimators === 0) toast.error("Please enter number of estimators")
     else get_data(false);
   }
 
   return (
-    <div className="flex w-[100%] h-[100%] justify-evenly items-center max-xl:gap-5 ">
+    <div className="flex max-sm:flex-col w-[100%] h-[100%] justify-evenly items-center max-xl:gap-5 ">
       <div className="w-[300px] h-[max-content] rounded-xl justify-between my-1  bg-black flex flex-col  items-center">
         <div className="flex-grow flex flex-col items-center gap-4 p-4 w-[100%]">
           <div className="w-[100%] overflow-visible h-[40px] z-10">
@@ -69,12 +70,12 @@ function Rf() {
               min={1}
             />
           </div>
-          <div className="flex items-center w-[100%] px-1 justify-between ">
-            <div>
+          <div className="flex items-center w-[100%] px-1 gap-4  justify-between ">
+            <div className=" items-center flex ">
               <input
                 id="checkbox"
                 type="checkbox"
-                className="w-4 h-4 cursor-pointer rounded-sm text-[#FFA800] focus:ring-black focus:border-none"
+                className="w-4 h-4  cursor-pointer rounded-sm text-[#FFA800] focus:ring-black focus:border-none"
                 onChange={() => setbootstrap((prev) => !prev)}
                 checked={bootstrap}
               />
@@ -85,7 +86,7 @@ function Rf() {
                 Bootstrap
               </label>
             </div>
-            <div className="relative mb-2 text-xs w-[10vw] ">
+            <div className="relative mb-2 text-xs  ">
               <label for="labels-range-input" className="text-white">
                 Max Samples
               </label>
@@ -129,7 +130,7 @@ function Rf() {
           <div
             onClick={Refresh}
             id="refresh"
-            className=" my-2 mx-2 bg-[#FFA800] justify-center cursor-pointer text-sm font-medium flex hover:bg-yellow-300 rounded-lg px-4 h-[40px] text-center items-center"
+            className=" my-2 mx-2  bg-[#FFA800] justify-center cursor-pointer text-sm font-medium flex hover:bg-yellow-300 rounded-lg px-4 h-[40px] text-center items-center"
           >
             Refresh
           </div>
@@ -138,9 +139,9 @@ function Rf() {
       <div className=" flex justify-center items-center ">
         {loading? <Loading/> : (
           <img
-            className="h-[50vh] w-[30vw] rounded-lg shadow-lg"
+            className="w-[70%] max-xl:w-[80%] max-sm:w-[90%] h-[auto] rounded-lg shadow-lg"
             src={`data:image/png;base64,${image}`}
-            alt="Regression Image"
+            alt="Classification Image"
           />
         )}
       </div>

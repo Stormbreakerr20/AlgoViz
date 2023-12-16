@@ -41,7 +41,7 @@ def regression(degree, dataset, reg_type):
     plt.grid()
     plt.plot(Xnew, ynew, "r", linewidth=3, label="Predictions")
     plt.scatter(X, y, c="b", label="Regression Points", edgecolors='black', linewidths=1)
-    plt.title("Regression")
+    plt.title("Regression on "+dataset)
     plt.legend()
 
     img_bytes = io.BytesIO()
@@ -58,7 +58,7 @@ def data_set_regression(dataset):
     plt.clf()
     plt.grid()
     plt.scatter(X, y, c="b", label="Regression Points", edgecolors='black', linewidths=1)
-    plt.title("Scattered Data Set")
+    plt.title("Scattered Plot of "+dataset)
 
     img_bytes = io.BytesIO()
     plt.savefig(img_bytes, format='png')
