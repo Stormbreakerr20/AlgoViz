@@ -1,9 +1,13 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# AlgoViz
 
-Currently, two official plugins are available:
+Immerse yourself in the world of algorithms with my innovative visualization platform! My project serves as an algorithm visualizer, designed specifically to empower students in comprehending the intricacies of data structures and machine learning algorithms.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Algorithm Visualizer – your go-to platform for exploring data structures and machine learning algorithms! This interactive repository is crafted to empower learners by providing visual representations that demystify complex concepts. Dive into sorting algorithms, traverse through data structures, and unravel the workings of machine learning models. Experiment, tweak parameters, and witness instant outcomes, fostering a deeper understanding through hands-on exploration. Join us in this educational journey where learning algorithms becomes an exciting and immersive experience!
 
+
+## Tech Stack
+
+**Client:** React, TailwindCSS
+
+**Server:** FastAPI
