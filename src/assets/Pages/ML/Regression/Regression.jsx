@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Reg_Drop from "./Reg_Drop";
-import DatasetDrop from "./DatasetDrop";
+import DatasetDrop from "../RandomForest/DatasetDrop";
 import api from "../../../../api";
 import Loading from "../../../components/Loading";
 import { toast } from "react-toastify";

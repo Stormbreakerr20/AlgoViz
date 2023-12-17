@@ -37,7 +37,7 @@ def log_reg(dataset):
     plt.grid()
     plt.contourf(xx1, xx2, y_hat, alpha=0.2)
     plt.scatter(X[:,0],X[:,1],c=y,cmap='viridis', alpha=.7)  
-    plt.title("Random Forest Classifier on "+dataset)
+    plt.title("Logistics Regression on "+dataset)
 
     img_bytes = io.BytesIO()
     plt.savefig(img_bytes, format='png')
