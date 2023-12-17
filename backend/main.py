@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from regression import regression,data_set_regression
 from random_forest import rf,data_set_rf
 from decision_tree import dt,data_set_dt
+from logistics_regression import log_reg,data_set_log
 import base64
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -45,9 +46,19 @@ async def rf_root(estimators: int, bootstrap: bool, dataset: str, reset: bool, m
 @app.get("/decision_tree/{dataset}/{reset}/{depth}")
 async def dt_root( dataset: str, reset: bool, depth: int):  
     if(reset == False):
-        rf_image,accuracy = dt(depth,dataset)
+        dt_image,accuracy = dt(depth,dataset)
     else: 
-        rf_image,accuracy = data_set_dt(dataset)
+        dt_image,accuracy = data_set_dt(dataset)
 
-    rf_image_base64 = base64.b64encode(rf_image.getvalue()).decode('utf-8')
-    return {"image": rf_image_base64,"accuracy":accuracy}
+    dt_image_base64 = base64.b64encode(dt_image.getvalue()).decode('utf-8')
+    return {"image": dt_image_base64,"accuracy":accuracy}
+
+@app.get("/log_regression/{dataset}/{reset}")
+async def dt_root( dataset: str, reset: bool):  
+    if(reset == False):
+        log_image,accuracy = log_reg(dataset)
+    else: 
+        log_image,accuracy = data_set_log(dataset)
+
+    log_image_base64 = base64.b64encode(log_image.getvalue()).decode('utf-8')
+    return {"image": log_image_base64,"accuracy":accuracy}

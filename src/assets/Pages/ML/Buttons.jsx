@@ -30,6 +30,9 @@ function Buttons() {
           <div onClick={() => handleClick("Decision Tree")} className="mx-1 flex-grow bg-[#FFA800] justify-center cursor-pointer text-lg font-medium flex hover:bg-yellow-300 rounded-lg px-5 h-[40px] text-center items-center">
             Decision Tree
           </div>
+          <div onClick={() => handleClick("Logistics Regression")} className="mx-1 flex-grow bg-[#FFA800] justify-center cursor-pointer text-lg font-medium flex hover:bg-yellow-300 rounded-lg px-5 h-[40px] text-center items-center">
+            Logistics Regression
+          </div>
         </div>
       </div>
     </>
