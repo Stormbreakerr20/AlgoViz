@@ -8,7 +8,7 @@ function About() {
   const [about, setAbout] = useState("Me")
   return (
     <>
-      <div className="flex flex-col mx-auto w-[90vw] h-[75vh] max-sm:h-[max-content] mt-5 gap-5 ">
+      <div className="flex flex-col mx-auto w-[78vw] h-[75vh] max-sm:h-[max-content] mt-5 gap-5 ">
         <div className="flex w-[100%]  flex-col gap-3">
           <Buttons setAbout={setAbout}/>
         </div>

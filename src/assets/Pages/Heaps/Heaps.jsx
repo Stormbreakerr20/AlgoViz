@@ -25,7 +25,7 @@ function Heaps() {
         <div className="flex w-[100%] max-xl:justify-center">
           <Buttons heapdata={heapdata} setHeapdata={setHeapdata} disabled={disabled}/>
         </div>
-        <Blured  className="bg-black w-[100%] h-[100%] flex  flex-col  rounded-lg items-center justify-center">
+        <Blured  className="bg-black text-[snow] w-[100%] h-[100%] flex  flex-col  rounded-lg items-center justify-center">
           <div id="blured" className="w-[700px]  flex justify-center items-end"></div>
           <Content id = "content"  className="w-[700px] ">
             <div className=" flex justify-center gap-2 p-3">

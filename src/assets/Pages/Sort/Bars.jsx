@@ -18,7 +18,7 @@ function Bars({ arr, setArr }) {
     const randomArray = [];
     for (let i = 0; i < n; i++) {
       const randomValue = Math.floor(Math.random() * 0.5 * (max - min)) + 10;
-      randomArray.push([randomValue, '#0085FF']);
+      randomArray.push([randomValue, '#2DBFDF']);
     }
 
     return randomArray;

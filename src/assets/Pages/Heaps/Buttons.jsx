@@ -77,11 +77,11 @@ function Buttons({ heapdata, setHeapdata,disabled }) {
               htmlFor="speed"
               className="block mb-1 text-lg font-medium text-gray-900 dark:text-white"
             >
-              <span className="flex justify-center items-center gap-3 ">
+              <span className="flex justify-center items-center gap-3 text-[snow] ">
                 <span className=" text-2xl ">
                   <TbBinaryTree />
                 </span>
-                <span>Insert Element: </span>
+                <span className="text-[snow]">Insert Element: </span>
               </span>
             </label>
             <form
@@ -91,7 +91,7 @@ function Buttons({ heapdata, setHeapdata,disabled }) {
               <input
                 disabled={state.isRunning || disabled}
                 type="number"
-                className="h-2 w-[60%] bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700   max-md:w-[40%] p-3"
+                className="h-2 w-[60%] bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700  max-md:w-[40%] p-3 "
                 onChange={handleChange}
                 value={toinsert}
               />
@@ -106,14 +106,14 @@ function Buttons({ heapdata, setHeapdata,disabled }) {
             </form>
           </div>
         </div>
-        <div className="flex gap-3 flex-grow max-xl:w-[100%] max-sm:flex-col">
+        <div className="flex gap-3 flex-grow max-xl:w-[100%] max-sm:flex-col ">
           <div className="flex-grow h-[40px] shadow-md max-xl:w-[50%] max-sm:w-[100%]  rounded-lg z-50">
             <Drop setheapdata={setHeapdata} setprevSelected={setprevSelected} />
           </div>
-          <div onClick={handleHeapSort} className="px-2 cursor-pointer  max-sm:w-[100%] flex-grow shadow-md h-[40px] bg-[#FFA800] rounded-lg flex justify-evenly items-center max-xl:w-[50%]">
-            <span className="flex justify-center items-center gap-3 mb-1  text-lg font-medium text-gray-900 cursor-pointer">
+          <div onClick={handleHeapSort} className="px-2 cursor-pointer  max-sm:w-[100%] flex-grow shadow-md h-[40px] bg-[#FFA800] rounded-lg flex justify-evenly items-center max-xl:w-[50%]  ">
+            <span className="flex justify-center items-center gap-3 mb-1  text-lg font-medium text-[snow] cursor-pointer">
               <span>{state.isRunning && state.AlgoSelected === "Heap Sort"?"Sorting":state.isRunning?"Inserting" : "Start"}</span>
-              <span className={`text-lg ${state.isRunning ? "blinking" : ""}`}>
+              <span className={`text-lg  ${state.isRunning ? "blinking" : ""}`}>
                 <BsGooglePlay />
               </span>
             </span>

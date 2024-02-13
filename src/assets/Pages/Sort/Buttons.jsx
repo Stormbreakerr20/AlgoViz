@@ -88,14 +88,14 @@ function Buttons({ arr, setArr }) {
 
   return (
     <>
-      <div className="flex justify-between w-[100%] gap-3 max-xl:flex-col max-xl:w-[80%] max-[880px]:w-[100%]">
+      <div className="flex justify-between w-[100%] gap-3 max-xl:flex-col max-xl:w-[80%] max-[880px]:w-[100%] ">
         <div className="flex gap-3 flex-grow max-xl:w-[100%] max-sm:flex-col">
           <div className=" shadow-md flex-grow max-xl:w-[50%] max-sm:w-[100%] h-[40px] bg-[#FFA800] rounded-lg flex justify-evenly items-center ">
             <label
               htmlFor="steps-range"
               className="block mb-1 text-lg font-medium text-gray-900 dark:text-white"
             >
-              <span className="flex justify-center items-center gap-3">
+              <span className="flex justify-center items-center gap-3 text-[snow]">
                 <span className=" text-2xl ">
                   <CgSize />
                 </span>
@@ -120,12 +120,12 @@ function Buttons({ arr, setArr }) {
               onChange={handleRangeChange}
             />
           </div>
-          <div className="flex-grow shadow-md h-[40px] max-xl:w-[50%] max-sm:w-[100%] bg-[#FFA800] rounded-lg flex justify-evenly items-center">
+          <div className="flex-grow shadow-md h-[40px] max-xl:w-[50%] max-sm:w-[100%] bg-[#FFA800] rounded-lg flex justify-evenly items-center ">
             <label
               htmlFor="speed"
               className="block mb-1 text-lg font-medium text-gray-900 dark:text-white"
             >
-              <span className="flex justify-center items-center gap-3 ">
+              <span className="flex justify-center items-center gap-3 text-[snow]">
                 <span className=" text-2xl ">
                   <MdSpeed />
                 </span>
@@ -153,7 +153,7 @@ function Buttons({ arr, setArr }) {
             onClick={state.isRunning ? null : Startsorting}
             className="max-sm:w-[100%] shadow-md flex-grow h-[40px] bg-[#FFA800] rounded-lg flex justify-evenly items-center max-xl:w-[50%]"
           >
-            <span className="flex  justify-center items-center gap-3 mb-1  text-lg font-medium text-gray-900 cursor-pointer">
+            <span className="flex  justify-center items-center gap-3 mb-1  text-lg font-medium text-gray-900 cursor-pointer text-[snow]">
               <span>{state.isRunning ? "Sorting" : "Start"}</span>
               <span className={`text-lg ${state.isRunning ? "blinking" : ""}`}>
                 <BsGooglePlay />
@@ -165,7 +165,7 @@ function Buttons({ arr, setArr }) {
               onClick={state.isRunning ? refresh : Startsorting}
               className="max-sm:w-[100%] shadow-md flex-grow h-[40px] bg-[#FFA800] rounded-lg flex justify-evenly items-center max-xl:w-[50%]"
             >
-              <span className="flex  justify-center items-center gap-3 mb-1  text-lg font-medium text-gray-900 cursor-pointer">
+              <span className="flex  justify-center items-center gap-3 mb-1  text-lg font-medium text-gray-900 cursor-pointer text-[snow]">
                 <span>Stop</span>
                 <span className={`text-lg`}>
                   <BsStopBtn />
