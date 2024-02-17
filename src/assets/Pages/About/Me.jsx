@@ -3,31 +3,30 @@ import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 function Me() {
   return (
-    <div className="flex flex-col lg:flex-row  ">
-      <div className=" lg:ml-4 lg:mr-2 lg:w-[30%] ">
+    <div className="flex lg:flex-row w-[100%]">
+      <div className=" lg:ml-4 lg:mr-2 lg:w-[30%] ml-4  flex flex-col justify-center items-center">
         <img
-          className="w-48 h-48 mt-3 lg:mt-0 xl:gap-5 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 mx-auto lg:mx-0"
-          src="/Luv.jpg"
+          className="w-48 h-48 mt-3 lg:mt-0 xl:gap-5 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 mx-auto lg:mx-0 object-cover object-center"
+          src="/dp.jpg"
           alt="Bordered avatar"
         />
-        <div className="text-white text-center lg:items-start lg:flex lg:flex-col">
+        <div className="text-white text-center flex lg:items-start lg:flex lg:flex-col">
           <div className="text-2xl mt-3">Connect with Me</div>
+          <div className="flex gap-4 ml-8">
           <a href="https://www.linkedin.com/in/luv-sharma-0a6369252/" target="_blank" rel="noopener noreferrer" className="text-xs flex gap-1 items-center mt-1 cursor-pointer justify-center">
-            <span className="text-lg"><FaLinkedin /></span>
-            <span>Connect on LinkedIn</span>
+            <span className="text-3xl icons duration-200"><FaLinkedin /></span>
           </a>
           <a href="https://www.instagram.com/luvsharma2004/" target="_blank" rel="noopener noreferrer" className="text-xs flex gap-1 items-center mt-1 cursor-pointer justify-center">
-            <span className="text-lg"><FaInstagram /></span>
-            <span>Follow on Instagram</span>
+            <span className="text-3xl icons duration-200"><FaInstagram /></span>
           </a>
           <a href="https://github.com/Stormbreakerr20" target="_blank" rel="noopener noreferrer" className="text-xs flex gap-1 items-center mt-1 cursor-pointer justify-center">
-            <span className="text-lg"><FaGithub /></span>
-            <span>Explore My Projects on GitHub</span>
+            <span className="text-3xl icons duration-200"><FaGithub /></span>
           </a>
         </div>
+        </div>
       </div>
-      <div className="lg:w-[70%] lg:ml-2 lg:mr-4">
-        <h1 className="text-4xl font-semibold mt-4 lg:mt-0 text-[#B1B7AB]">
+      <div className="lg:w-[80%] lg:ml-2 lg:mr-2">
+        <h1 className="text-4xl font-semibold mt-4 lg:mt-0 text-[#420665]">
           Diving Deep into Code: Unveiling the World of
           <span className=" text-nowrap "> Luv Sharma</span>
         </h1>
